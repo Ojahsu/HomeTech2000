@@ -3,20 +3,21 @@ package Equipement;
 import Shared.Enum.Etat;
 import Shared.Interface.IEtat;
 
-public class Serrure extends Equipement implements IEtat {
-
+public class Volet extends Equipement implements IEtat, Runnable {
     private Etat etat = Etat.OUVERT;
     public Etat getEtat() {
         return etat;
     }
+    private float ouverture ;
+
 
     @Override
-    public void ouverture() {
-        this.etat = Etat.OUVERT;
-    }
+    public void ouverture() {}
 
     @Override
-    public void fermeture() {
-        this.etat = Etat.FERME;
-    }
+    public void fermeture() {}
+
+    @Override
+    public void run() {}
+
 }

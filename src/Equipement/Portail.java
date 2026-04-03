@@ -3,12 +3,17 @@ package Equipement;
 import Shared.Enum.Etat;
 import Shared.Interface.IEtat;
 
-public class Serrure extends Equipement implements IEtat {
+import java.util.LinkedList;
+import java.util.List;
+
+public class Portail extends Equipement implements IEtat, Runnable {
 
     private Etat etat = Etat.OUVERT;
     public Etat getEtat() {
         return etat;
     }
+    private List portails = new LinkedList<>();
+
 
     @Override
     public void ouverture() {
@@ -19,4 +24,12 @@ public class Serrure extends Equipement implements IEtat {
     public void fermeture() {
         this.etat = Etat.FERME;
     }
+
+    @Override
+    public void run() {
+
+    }
 }
+
+
+
