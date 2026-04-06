@@ -9,17 +9,28 @@ import java.util.List;
 
 public class RobotAspirateur extends Equipement implements Runnable {
 
-    private StatutAspirateur statut;
+    public StatutAspirateur statut;
 
-    private float niveauEauPropre;
+    public float niveauEauPropre;
 
-    private float niveauEauSale;
+    public float niveauEauSale;
 
-    private int nombreDeCycle;
+    public int nombreDeCycle;
+
+    public void setStatut(StatutAspirateur lStatut){
+        this.statut = lStatut;
+
+    }
 
     @Override
     public void run() {
+        System.out.println(nom + " demarre...");
+        this.statut = StatutAspirateur.EN_TACHE;
+        try { Thread.sleep(2000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+        System.out.println(nom + " -> nettoyage termine");
+        this.statut = StatutAspirateur.EN_CHARGE;
     }
+
 
     public void lancerTache(TypeTache typeTache, List<Piece> pieces ){
 
