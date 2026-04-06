@@ -30,7 +30,7 @@ public class Chauffage extends Equipement implements IMode, Runnable {
             temp++;
             System.out.println("Temperature : " + temp + " C");
             try {
-                Thread.sleep(1000); // monte d'1° par seconde
+                Thread.sleep(1800);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

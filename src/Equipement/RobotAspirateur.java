@@ -24,22 +24,12 @@ public class RobotAspirateur extends Equipement implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(nom + " demarre...");
-        this.statut = StatutAspirateur.EN_TACHE;
-        try { Thread.sleep(2000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
-        System.out.println(nom + " -> nettoyage termine");
+        System.out.println("Demarrage du nettoyage...");
+        for (int i = 10; i <= 100; i += 10) {
+            try { Thread.sleep(150); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            System.out.println("Nettoyage " + i + "% complete");
+        }
         this.statut = StatutAspirateur.EN_CHARGE;
-    }
-
-
-    public void lancerTache(TypeTache typeTache, List<Piece> pieces ){
-
-    }
-
-    public void retourStation(){
-    }
-
-    public void ajouterRoutine(Time heure, List<Jours> jour , TypeTache typeTache ){
-
+        System.out.println("Nettoyage termine -> retour a la base");
     }
 }

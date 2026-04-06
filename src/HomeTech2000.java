@@ -100,14 +100,8 @@ public class HomeTech2000 {
         System.out.println();
         System.out.println("06:30 - Petit dejeuner, montee en temperature du salon.");
 
-        chauffage.temperature = 20;
-        Thread threadChauffage = new Thread(chauffage, "Thread-Chauffage");
-        threadChauffage.start();
-
         Thread threadPortailOuverture1 = new Thread(portail, "Thread-Portail");
         threadPortailOuverture1.start();
-
-        threadChauffage.join();
         threadPortailOuverture1.join();
 
         serrure.ouverture();
@@ -138,7 +132,12 @@ public class HomeTech2000 {
         System.out.println("07:30 - Fermeture des volets.");
 
         Thread threadVoletFermeture = new Thread(volet, "Thread-Volet");
+
+        chauffage.temperature = 19;
+        Thread threadChauffage = new Thread(chauffage, "Thread-Chauffage");
+
         threadVoletFermeture.start();
+        threadChauffage.start();
         threadVoletFermeture.join();
 
         // ============================================================
