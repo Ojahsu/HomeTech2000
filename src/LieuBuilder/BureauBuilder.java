@@ -2,6 +2,7 @@ package LieuBuilder;
 
 import Equipement.Equipement;
 import Shared.Interface.IBuilder;
+import Shared.Lieu;
 import Shared.Piece;
 
 public class BureauBuilder implements IBuilder {
@@ -21,5 +22,10 @@ public class BureauBuilder implements IBuilder {
     @Override
     public void ajoutEquipement(Equipement equipement, Piece piece) {
         piece.ajouterEquipement(equipement);
+    }
+
+    @Override
+    public Lieu getLieu() {
+        return this.bureau;
     }
 }
