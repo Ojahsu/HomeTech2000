@@ -5,8 +5,8 @@ import Shared.Interface.IMode;
 
 public class Chauffage extends Equipement implements IMode, Runnable {
 
-    private Mode mode = Mode.ACTIF;
-    private float temperature;
+    public Mode mode = Mode.ACTIF;
+    public float temperature;
 
     public void reglageTemperature( float temperatureCible){}
     public float getTemperaturePiece(){
@@ -14,16 +14,23 @@ public class Chauffage extends Equipement implements IMode, Runnable {
     }
 
     @Override
-    public void changeModel() {}
+    public void changeMode() {
+        switch (this.mode) {
+            case ACTIF :
+                this.mode = Mode.INACTIF;
+            case INACTIF:
+                this.mode = Mode.ACTIF;
+        }
+    }
 
     @Override
     public void run() {
         int temp = 15;
         while (temp < temperature) {
             temp++;
-            System.out.println("Température : " + temp + "°C");
+            System.out.println("Temperature : " + temp + " C");
             try {
-                Thread.sleep(1000); // monte d'1° par seconde
+                Thread.sleep(1800);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

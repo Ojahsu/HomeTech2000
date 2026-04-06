@@ -5,25 +5,29 @@ import Shared.Interface.IMode;
 
 public class Ampoule extends Equipement implements IMode, Runnable {
 
-    private Mode mode = Mode.ACTIF;
-    private float intencite;
+    public Mode mode = Mode.ACTIF;
+    public float intencite;
 
     public void reglageIntencite(float intencite){}
 
     @Override
-    public void changeModel() {}
+    public void changeMode() {
+        switch (this.mode) {
+            case ACTIF :
+                this.mode = Mode.INACTIF;
+            case INACTIF:
+                this.mode = Mode.ACTIF;
+        }
+    }
 
     @Override
     public void run() {
-        int lumi = 0;
-        while (lumi < intencite) {
-            lumi++;
-            System.out.println("Luminosité de l'ampoule: " + lumi);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        int i = 1;
+        while (i <= this.intencite) {
+            System.out.println("Ampoule -> luminosite : " + i);
+            try { Thread.sleep(500); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            i++;
         }
+        System.out.println(nom + " -> luminosite reglée a " + this.intencite);
     }
 }

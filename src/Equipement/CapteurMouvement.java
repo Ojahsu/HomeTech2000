@@ -5,14 +5,19 @@ import Shared.Interface.IMode;
 
 public class CapteurMouvement extends Equipement implements IMode, Runnable {
 
-    private Mode mode = Mode.ACTIF;
-    public Mode getMode() {
-        return mode;
-    }
+    public Mode mode = Mode.ACTIF;
+
     public void alerteMouvement() {}
 
     @Override
-    public void changeModel() {}
+    public void changeMode() {
+        switch (this.mode) {
+            case ACTIF :
+                this.mode = Mode.INACTIF;
+            case INACTIF:
+                this.mode = Mode.ACTIF;
+        }
+    }
 
     @Override
     public void run() {}

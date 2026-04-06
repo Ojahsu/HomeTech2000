@@ -8,11 +8,16 @@ import static Shared.Enum.Mode.ACTIF;
 
 public class Alarme extends Equipement implements Runnable, IMode {
 
-    private Mode mode;
+    public Mode mode = Mode.ACTIF;
 
     @Override
-    public void changeModel() {
-
+    public void changeMode() {
+        switch (this.mode) {
+            case ACTIF :
+                this.mode = Mode.INACTIF;
+            case INACTIF:
+                this.mode = Mode.ACTIF;
+        }
     }
 
     @Override

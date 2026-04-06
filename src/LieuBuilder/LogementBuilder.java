@@ -1,7 +1,9 @@
 package LieuBuilder;
 
 import Equipement.Equipement;
+import Shared.Enum.TypePiece;
 import Shared.Interface.IBuilder;
+import Shared.Lieu;
 import Shared.Piece;
 
 public class LogementBuilder implements IBuilder {
@@ -14,12 +16,17 @@ public class LogementBuilder implements IBuilder {
     }
 
     @Override
-    public void ajoutPiece(String nom) {
-        this.logement.ajouterPiece(new Piece(nom));
+    public void ajoutPiece(TypePiece type, String nom) {
+        this.logement.ajouterPiece(type, new Piece(nom));
     }
 
     @Override
     public void ajoutEquipement(Equipement equipement, Piece piece) {
         piece.ajouterEquipement(equipement);
+    }
+
+    @Override
+    public Lieu getLieu() {
+        return this.logement;
     }
 }

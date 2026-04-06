@@ -5,7 +5,7 @@ import Shared.Interface.IEtat;
 
 public class Serrure extends Equipement implements Runnable, IEtat {
 
-    private Etat etat = Etat.OUVERT;
+    public Etat etat = Etat.OUVERT;
     public Etat getEtat() {
         return etat;
     }

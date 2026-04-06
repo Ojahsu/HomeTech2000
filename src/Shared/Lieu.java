@@ -1,18 +1,23 @@
 package Shared;
 
-import Equipement.Equipement;
+import Shared.Enum.TypePiece;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public abstract class Lieu {
 
-    private LinkedList<Piece> pieces;
+    public HashMap<TypePiece, LinkedList<Piece>> pieces;
 
-    public void ajouterPiece(Piece piece){
-        this.pieces.add(piece);
+    public Lieu() {
+        this.pieces = new HashMap<>();
     }
 
-    public LinkedList<Piece> getPieces() {
-        return pieces;
+    public void ajouterPiece(TypePiece type, Piece piece){
+        this.pieces.computeIfAbsent(type, key -> new LinkedList<>()).add(piece);
+    }
+
+    public LinkedList<Piece> getPieces(TypePiece type) {
+        return this.pieces.get(type);
     }
 }

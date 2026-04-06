@@ -5,14 +5,21 @@ import Shared.Interface.IMode;
 
 public class CapteurFumee extends Equipement implements IMode, Runnable {
 
-    private Mode mode = Mode.ACTIF;
-    private float batterie;
+    public Mode mode = Mode.ACTIF;
+    public float batterie;
 
     public void alerteFumee() {}
     public void alerteBatterie() {}
 
     @Override
-    public void changeModel() {}
+    public void changeMode() {
+        switch (this.mode) {
+            case ACTIF :
+                this.mode = Mode.INACTIF;
+            case INACTIF:
+                this.mode = Mode.ACTIF;
+        }
+    }
 
     @Override
     public void run() {}
